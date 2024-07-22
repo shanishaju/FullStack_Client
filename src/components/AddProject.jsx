@@ -6,7 +6,19 @@ import Modal from 'react-bootstrap/Modal';
 
 
 function AddProject() {
+
+
   const [show, setShow] = useState(false);
+  const [projectDetails, setProjectDetails] =useState({
+    title:"",
+    language:"",
+    github:"",
+    website:"",
+    overview:"",
+    proimg:""
+
+  })
+  console.log(projectDetails);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,22 +45,22 @@ function AddProject() {
             <Col sm={12} md={6}>
             <form action="" className='p-3'></form>
             <div className="mb-3">
-              <input type="text" placeholder='title ' className='form-control'/>
+              <input type="text" placeholder='title ' className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='language ' className='form-control'/>
+            <input type="text" placeholder='language ' className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='github ' className='form-control'/>
+            <input type="text" placeholder='github ' className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='website ' className='form-control'/>
+            <input type="text" placeholder='website ' className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-              <textarea name="" id=""placeholder='overview 'className='form-control' rows={4}></textarea>
+              <textarea name="" id=""placeholder='overview 'className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
             </div>
             <div className="mb-3"></div>
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -6,6 +6,16 @@ import ProjectCard from '../components/ProjectCard'
 import { Link } from 'react-router-dom'
 
 function Home() {
+  const [isLogin , setIsLogin] = useState(false)
+  useEffect(()=>{
+    if(sessionStorage.getItem("token")){
+      setIsLogin(true)
+    }
+    else{
+      setIsLogin(true)
+    }
+
+  },[])
   return (
     <>
       <div className='container-fluid bg-success' style={{height:'100vh' }}>
@@ -13,11 +23,11 @@ function Home() {
             <Col xm={12} md={6} className='ps-5'>
             <h1 style={{color:'white', fontSize:'70px'}}>Project Fair</h1>
             <p style={{color:'black'}}>One stop destination for all software development projects</p>
-            <Link to={'/login'}>             <button className='btn text-light'> Get started<FontAwesomeIcon icon={faArrowRight} bounce className='ms-2' /></button>
-            </Link>
+            { !isLogin? <Link to={'/login'}>             <button className='btn text-light'> Get started<FontAwesomeIcon icon={faArrowRight} bounce className='ms-2' /></button>
+            </Link> :
              <Link to={'/dashboard'}><button className='btn text-light '>Manage projects<FontAwesomeIcon icon={faArrowRight} bounce className='ms-2' /></button>
 
-             </Link>
+             </Link>}
 
             </Col>
             <Col xm={12} md={6}>

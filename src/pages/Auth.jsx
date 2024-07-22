@@ -1,17 +1,26 @@
 import { faStackOverflow } from '@fortawesome/free-brands-svg-icons'
-import { width } from '@fortawesome/free-brands-svg-icons/fa42Group'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { registerApi } from '../services/allApi'
+import { Link, useNavigate } from 'react-router-dom'
+import { loginApi, registerApi } from '../services/allApi'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 
 
 // taking data from input box for sending to backend -- after done the backend
 function Auth({register}) {
+
+    // giving path after signing up
+    const navigate = useNavigate()
+
+
+  // usestate for getting the input content
       const [userDetails , setUserDetails] = useState({
         username:"",
         email:"",
@@ -25,13 +34,52 @@ const handlleRegister = async()=>{
   const {username , email , password} = userDetails
    
   if (!username || !email || !password){
-    alert('please fill the form completely')
+    toast.info('please fill the form completely')
   }
   else{
     const result = await registerApi(userDetails)
+    
     console.log(result);
+    if(result.status==200){
+      toast.success('Registration successfully')
+      navigate('/login')
+    }
+    else{
+      toast.error('something went wrong.Please after sometimes')
+    }
   }
 
+}
+
+const handleLogin = async()=>{
+  const{email, password} = userDetails
+  if(!email || !password){
+    toast.info("please fill the form completely")
+  }
+  else{
+    const result = await loginApi({email,password})
+    console.log(result);
+    if(result.status==200){
+      toast.success("login successful")
+      sessionStorage.setItem('existingUser',JSON.stringify
+        (result.data.existingUser))
+        sessionStorage.setItem("token"),
+        setUserDetails({
+          username:"",
+          email:"",
+          password:""
+        })
+        setTimeout(()=>{
+        navigate('/')
+      },2000)
+
+    }
+    else{
+      toast.error(result.response.data)
+    }
+    console.log(response);
+
+  }
 }
   return (
 
@@ -71,12 +119,12 @@ const handlleRegister = async()=>{
               </div>
               <div className="mb-3"> 
                 { register? <div>
-                <button className='btn btn-warning w-100' onClick={handlleRegister} > Register</button>
+                <button type='button' className='btn btn-warning w-100' onClick={handlleRegister} > Register</button>
                 <p className='mt-3'>Already User? Login <Link to={'/login'} className='text-warning'>here</Link></p>
                 
                   </div>:
                   <div>
-                  <button className='btn btn-warning w-100 '> Login</button>
+                  <button type='button' className='btn btn-warning w-100  '  onClick={handleLogin}>  Login</button>
                 <p className='mt-3'>New user ragister <Link to={'/register'} className='text-warning'>here</Link></p>
               
                   </div>}
@@ -87,7 +135,7 @@ const handlleRegister = async()=>{
           </Row>
           
         </div>
-
+        <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
        </div>      
     </>
   )
