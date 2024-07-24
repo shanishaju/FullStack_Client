@@ -4,6 +4,8 @@ import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { addProjectApi } from '../services/allApi';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function AddProject() {
@@ -69,10 +71,11 @@ function AddProject() {
     const {title,language,github,website,overview,proimg} =projectDetails
 
     if (!title || !language || !github || !website || !overview || !proimg){
-      alert("please fill the form compltely")
+      toast.info("please fill the form compltely")
     }
     else{
       //api
+      //use formdate bcoz of uploaded content
       const reqBody = new FormData()
       reqBody.append("title",title)
       reqBody.append("language",language)
@@ -84,6 +87,7 @@ function AddProject() {
     if(token){
       const reqHeader ={
         "Content-Type":"multipart/form-data",
+        //token sending for ensuring user login
         "Authorization":`Bearer ${token}`
       }
 
@@ -91,7 +95,7 @@ function AddProject() {
       console.log(result);
     }
     else{
-      alert('pls login')
+      toast.error('pls login')
     }
     }
   }
@@ -149,7 +153,8 @@ function AddProject() {
           </Button>
         </Modal.Footer>
       </Modal>
-       
+      <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
+
     </>
   )
 }
