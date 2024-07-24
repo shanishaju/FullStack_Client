@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { addProjectApi } from '../services/allApi';
 
 
 function AddProject() {
@@ -18,11 +19,82 @@ function AddProject() {
     proimg:""
 
   })
+  
+  const [preview , setPreview] = useState("")
+  const [token, setToken] = useState("")
+
   console.log(projectDetails);
+  const handleFile=(e)=>{
+    // console.log(e.target.files[0]);
+    setProjectDetails({...projectDetails,proimg:e.target.files[0]})
+  }
+
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {setShow(true)
+    handleCancel()
+  }
+  const handleCancel=()=>{
+    setProjectDetails({
+      title:"",
+      language:"",
+      github:"",
+      website:"",
+      overview:"",
+      proimg:""
+    })
+    setPreview("")
 
+ 
+}
+  
+  useEffect(()=>{
+    if(projectDetails.proimg){
+      //createObjectURL
+      setPreview(URL.createObjectURL(projectDetails.proimg));
+    }
+  },[projectDetails.proimg])
+
+
+  useEffect(()=>{
+    if(sessionStorage.getItem("token")){
+      setToken(sessionStorage.getItem("token"))
+    }
+  },[])
+ 
+   
+  const handleAdd = async(e)=>{
+    e.preventDefault()
+
+    const {title,language,github,website,overview,proimg} =projectDetails
+
+    if (!title || !language || !github || !website || !overview || !proimg){
+      alert("please fill the form compltely")
+    }
+    else{
+      //api
+      const reqBody = new FormData()
+      reqBody.append("title",title)
+      reqBody.append("language",language)
+      reqBody.append("github",github)
+      reqBody.append("website",website)
+      reqBody.append("overview",overview)
+      reqBody.append("proimg",proimg)
+
+    if(token){
+      const reqHeader ={
+        "Content-Type":"multipart/form-data",
+        "Authorization":`Bearer ${token}`
+      }
+
+      const result = await addProjectApi(reqBody,reqHeader)
+      console.log(result);
+    }
+    else{
+      alert('pls login')
+    }
+    }
+  }
   return (
 
     <>
@@ -37,30 +109,30 @@ function AddProject() {
           <Row>
             <Col sm={12} md={6}>
             <label htmlFor="proimg">
-              <input id='proimg' type="file"  style={{display:'none'}}/>
-              <img src="https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg" alt="" />
+              <input id='proimg' type="file"  style={{display:'none'}} onChange={(e)=>handleFile(e)}/>
+              <img src={preview?preview:"https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt=""  width={"100%"}/>
             </label>
             
             </Col>
             <Col sm={12} md={6}>
             <form action="" className='p-3'></form>
             <div className="mb-3">
-              <input type="text" placeholder='title ' className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
+              <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='language ' className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
+            <input type="text" placeholder='language ' value={projectDetails.language}className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='github ' className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
+            <input type="text" placeholder='github 'value={projectDetails.github} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-            <input type="text" placeholder='website ' className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
+            <input type="text" placeholder='website 'value={projectDetails.website} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
 
             </div>
             <div className="mb-3">
-              <textarea name="" id=""placeholder='overview 'className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
+              <textarea name="" id=""placeholder='overview ' value={projectDetails.overview}className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
             </div>
             <div className="mb-3"></div>
 
@@ -69,10 +141,10 @@ function AddProject() {
           
           </Modal.Body>
         <Modal.Footer>
-          <Button variant="warning" onClick={handleClose}>
+          <Button variant="warning" onClick={handleCancel} >
             Cancel
           </Button>
-          <Button variant="success" onClick={handleClose}>
+          <Button variant="success" onClick={handleAdd}>
             Add
           </Button>
         </Modal.Footer>
