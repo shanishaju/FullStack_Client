@@ -25,7 +25,7 @@ function Auth({register}) {
         username:"",
         email:"",
         password:""
-      })
+      });
       console.log(userDetails);
 
       //after creating apis
@@ -37,10 +37,9 @@ const handlleRegister = async()=>{
     toast.info('please fill the form completely')
   }
   else{
-    const result = await registerApi(userDetails)
+    const response = await registerApi(userDetails)
     
-    console.log(result);
-    if(result.status==200){
+    if(response.status==200){
       toast.success('Registration successfully')
       navigate('/login')
     }
@@ -48,22 +47,23 @@ const handlleRegister = async()=>{
       toast.error('something went wrong.Please after sometimes')
     }
   }
-
 }
-
+//login button api call
 const handleLogin = async()=>{
-  const{email, password} = userDetails
+  const {email, password} = userDetails
+  //checking input boxes were filled
   if(!email || !password){
     toast.info("please fill the form completely")
   }
   else{
-    const result = await loginApi({email,password})
-    console.log(result);
-    if(result.status==200){
-      toast.success("login successful")
-      sessionStorage.setItem('existingUser',JSON.stringify
-        (result.data.existingUser))
-        sessionStorage.setItem("token"),
+    //call the login api
+    const response = await loginApi({email,password})
+    // console.log(response);
+    if(response.status == 200){
+      toast.success("login successful")   
+
+      sessionStorage.setItem("exsistingUser",JSON.stringify(response.data.exsistingUser))
+        sessionStorage.setItem("token",response.data.token)
         setUserDetails({
           username:"",
           email:"",
