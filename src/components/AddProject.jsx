@@ -103,7 +103,7 @@ function AddProject() {
 
     <>
 
-     <button className='btn btn-success'  onClick={handleShow}>Add Project</button>
+     <button className='btn btn-success' onClick={handleShow}>Add Project</button>
 
      <Modal show={show} onHide={handleClose}size='lg' >
         <Modal.Header closeButton>

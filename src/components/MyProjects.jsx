@@ -11,7 +11,7 @@ function MyProjects() {
     < >
       <div className='shadow px-3 py-4 rounded'>
     <div className='d-flex justify-content-between'>
-    <h5 className='text-success '>My Project</h5>
+    <h5 className='text-success  '>My Project</h5>
     <AddProject/>
     </div>
     <div className='mt-4 p-3 bg-light d-flex justify-content-between'>
