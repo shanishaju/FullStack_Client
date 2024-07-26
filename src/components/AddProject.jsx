@@ -95,7 +95,7 @@ function AddProject() {
       console.log(result);
     }
     else{
-      toast.error('pls login')
+      toast.error('please login')
     }
     }
   }
