@@ -103,57 +103,62 @@ function AddProject() {
 
     <>
 
-     <button className='btn btn-success' onClick={handleShow}>Add Project</button>
+  <div className='ms-auto'>
+  <button className='btn btn-success' onClick={handleShow}>Add Project</button>
 
-     <Modal show={show} onHide={handleClose}size='lg' >
-        <Modal.Header closeButton>
-          <Modal.Title className='text-success'>Add Project Details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Row>
-            <Col sm={12} md={6}>
-            <label htmlFor="proimg">
-              <input id='proimg' type="file"  style={{display:'none'}} onChange={(e)=>handleFile(e)}/>
-              <img src={preview?preview:"https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt=""  width={"100%"}/>
-            </label>
-            
-            </Col>
-            <Col sm={12} md={6}>
-            <form action="" className='p-3'></form>
-            <div className="mb-3">
-              <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
-            </div>
-            <div className="mb-3">
-            <input type="text" placeholder='language ' value={projectDetails.language}className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
+<Modal show={show} onHide={handleClose}size='lg' >
+   <Modal.Header closeButton>
+     <Modal.Title className='text-success'>Add Project Details</Modal.Title>
+   </Modal.Header>
+   <Modal.Body>
+     <Row>
+       <Col sm={12} md={6}>
+       <label htmlFor="proimg">
+         <input id='proimg' type="file"  style={{display:'none'}} onChange={(e)=>handleFile(e)}/>
+         <img src={preview?preview:"https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt=""  width={"100%"}/>
+       </label>
+       
+       </Col>
+       <Col sm={12} md={6}>
+       <form action="" className='p-3'></form>
+       <div className="mb-3">
+         <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
+       </div>
+       <div className="mb-3">
+       <input type="text" placeholder='language ' value={projectDetails.language}className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
 
-            </div>
-            <div className="mb-3">
-            <input type="text" placeholder='github 'value={projectDetails.github} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
+       </div>
+       <div className="mb-3">
+       <input type="text" placeholder='github 'value={projectDetails.github} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
 
-            </div>
-            <div className="mb-3">
-            <input type="text" placeholder='website 'value={projectDetails.website} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
+       </div>
+       <div className="mb-3">
+       <input type="text" placeholder='website 'value={projectDetails.website} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
 
-            </div>
-            <div className="mb-3">
-              <textarea name="" id=""placeholder='overview ' value={projectDetails.overview}className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
-            </div>
-            <div className="mb-3"></div>
+       </div>
+       <div className="mb-3">
+         <textarea name="" id=""placeholder='overview ' value={projectDetails.overview}className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
+       </div>
+       <div className="mb-3"></div>
 
-            </Col>
-          </Row>
-          
-          </Modal.Body>
-        <Modal.Footer>
-          <Button variant="warning" onClick={handleCancel} >
-            Cancel
-          </Button>
-          <Button variant="success" onClick={handleAdd}>
-            Add
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
+       </Col>
+     </Row>
+     
+     </Modal.Body>
+   <Modal.Footer>
+     <Button variant="warning" onClick={handleCancel} >
+       Cancel
+     </Button>
+     <Button variant="success" onClick={handleAdd}>
+       Add
+     </Button>
+   </Modal.Footer>
+
+ </Modal>
+
+  </div>
+  <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
+
 
     </>
   )
