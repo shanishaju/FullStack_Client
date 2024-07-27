@@ -1,5 +1,3 @@
-
-import AddProject from "../components/AddProject"
 import { commonApi } from "./commonApis"
 import { serverUrl } from "./serverUrl"
 
@@ -18,4 +16,21 @@ export const loginApi = async(reqBody)=>{
 //add project
 export const addProjectApi = async(reqBody,reqHeader)=>{
     return await commonApi('POST',`${serverUrl}/addProject`,reqBody,reqHeader)
+}
+
+//home project
+export const homeProjectApi = async()=>{
+    return await commonApi('GET',`${serverUrl}/homeproject`,"","")
+}
+
+//all project
+export const allProjectApi = async(searchKey,reqHeader)=>{
+
+    return await commonApi('GET',`${serverUrl}/allProjects?search=${searchKey}`,"",reqHeader)
+}
+
+//user project
+export const userProjectApi = async(reqHeader)=>{
+
+    return await commonApi('GET',`${serverUrl}/userProject`,"",reqHeader)
 }

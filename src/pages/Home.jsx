@@ -4,9 +4,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import ProjectCard from '../components/ProjectCard'
 import { Link } from 'react-router-dom'
+import { homeProjectApi } from '../services/allApi'
 
 function Home() {
   const [isLogin , setIsLogin] = useState(false)
+  const [homeProject, setHomeProject] = useState([])
+
+
+const getHomeProject =async()=>{
+  const result = await homeProjectApi()
+  setHomeProject(result.data);
+  console.log(result.data);
+
+}
   useEffect(()=>{
     if(sessionStorage.getItem("token")){
       setIsLogin(true)
@@ -14,8 +24,10 @@ function Home() {
     else{
       setIsLogin(true)
     }
+    getHomeProject()
 
   },[])
+
   return (
     <>
       <div className='container-fluid bg-success' style={{height:'100vh' }}>
@@ -39,14 +51,14 @@ function Home() {
       <div className='container-fluid' style={{height:"100vh"}}>
         <h1 className=' text-center mt-5'>Explore our projects</h1>
         <div className="row">
+         {homeProject?.length>0? 
+         homeProject?.map((item)=>(
           <div className="col-md-4 p-4">
-            <ProjectCard/>
+            <ProjectCard projects={item}/>
           </div>
-          <div className="col-md-4 p-4">
-            <ProjectCard/>
-          </div>          <div className="col-md-4 p-4">
-            <ProjectCard/>
-          </div>
+         ))
+         :null}
+
         </div>
         <Link to={'/project'}><h5 className='text-center mt-5 '>See more projects</h5></Link>
       </div>

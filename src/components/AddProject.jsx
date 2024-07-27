@@ -93,6 +93,12 @@ function AddProject() {
 
       const result = await addProjectApi(reqBody,reqHeader)
       console.log(result);
+      if(result.status==200){
+        toast.success("Project Added Successfully")
+      }
+      else{
+        toast.error("Failed to add projects")
+      }
     }
     else{
       toast.error('please login')
@@ -158,8 +164,6 @@ function AddProject() {
 
   </div>
   <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
-
-
     </>
   )
 }
