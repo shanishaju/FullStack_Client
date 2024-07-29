@@ -5,9 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGlobe, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { userProjectApi } from '../services/allApi'
+import { deleteProjectApi } from '../services/allApi'
+import { addResponseContext } from '../context/DataShare'
+import { Link } from 'react-router-dom'
 
 
 function MyProjects() {
+    // call the variable addResponse here
+    const {addResponse} = useContext(addResponseContext)
+    // usestate for delete screen refresh
+    const [deleteStatus, setDeleteStatus] = useState(false)
 const[userProject, setUserProject]= useState([])
   const getUserProject = async()=>{
       if(sessionStorage.getItem("token")){
@@ -21,9 +28,21 @@ const[userProject, setUserProject]= useState([])
  }
 }
 console.log(userProject);
-useEffect(()=>{
-getUserProject()
-},[])
+ // Deleting project
+ const handleDelete = async(id)=>{
+  const result = await deleteProjectApi(id)
+  console.log(result);
+  if(result.status === 200){
+    setDeleteStatus(true)
+  }
+  
+}
+
+
+useEffect(() => {
+  getUserProject()
+  setDeleteStatus(false)
+}, [addResponse,deleteStatus]);
   return (
     < >
       <div className='shadow px-3 py-4 rounded'>
@@ -42,7 +61,7 @@ userProject?.map((item)=>(
         <EditProject/>
         <FontAwesomeIcon icon={faGlobe}  className='text-warning ms-3'/>
         <FontAwesomeIcon icon={faGithub} className='text-success ms-3' />
-        <FontAwesomeIcon icon={faTrash} className='text-danger ms-3'/>
+        <FontAwesomeIcon icon={faTrash} onClick={()=>handleDelete(item?._id)}  className='text-danger ms-3 me-5' />
       </div>
     
 

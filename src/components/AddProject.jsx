@@ -6,10 +6,13 @@ import Modal from 'react-bootstrap/Modal';
 import { addProjectApi } from '../services/allApi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { addResponseContext } from '../context/DataShare';
+
 
 
 function AddProject() {
 
+  // Modal use states
 
   const [show, setShow] = useState(false);
   const [projectDetails, setProjectDetails] =useState({
@@ -24,7 +27,9 @@ function AddProject() {
   
   const [preview , setPreview] = useState("")
   const [token, setToken] = useState("")
-
+ 
+  // for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
+  const {setAddResponse} = useContext (addResponseContext)
   console.log(projectDetails);
   const handleFile=(e)=>{
     // console.log(e.target.files[0]);
@@ -49,7 +54,8 @@ function AddProject() {
 
  
 }
-  
+     // Useeffect to convert image into URL
+
   useEffect(()=>{
     if(projectDetails.proimg){
       //createObjectURL
@@ -93,11 +99,11 @@ function AddProject() {
 
       const result = await addProjectApi(reqBody,reqHeader)
       console.log(result);
-      if(result.status==200){
-        toast.success("Project Added Successfully")
-      }
-      else{
-        toast.error("Failed to add projects")
+      if(result.status == 200){
+        toast.success('Project Added Successfully')
+        handleClose()
+        // here is where data is being changed so call context here
+        setAddResponse(result.data)
       }
     }
     else{
