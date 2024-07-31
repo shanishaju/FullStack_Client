@@ -55,7 +55,7 @@ function MyProjects() {
           <div className='mt-4 p-3 bg-light d-flex justify-content-between' key={item._id}>
             <h5>{item.title}</h5>
             <div className="d-flex">
-              <EditProject />
+              <EditProject project={item} />
               <Link to={item?.website} target='_blank'><FontAwesomeIcon icon={faGlobe} className='text-warning ms-3' /></Link>
               <Link to={item?.github} target='_blank'> <FontAwesomeIcon icon={faGithub} className='text-success ms-3' /></Link>
               <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(item?._id)} className='text-danger ms-3 me-5' />

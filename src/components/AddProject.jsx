@@ -28,6 +28,7 @@ function AddProject() {
 
   const [preview, setPreview] = useState("")
   const [token, setToken] = useState("")
+  const [key, setKey] = useState(0)
 
   // useContext hook || for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
   const { setAddResponse } = useContext(addResponseContext)
@@ -53,7 +54,12 @@ function AddProject() {
       proimg: ""
     })
     setPreview("")
-
+    if (key == 0) {
+      setKey(1)
+    }
+    else {
+      setKey(0)
+    }
 
   }
   // Useeffect to convert image into URL
@@ -128,7 +134,7 @@ function AddProject() {
             <Row>
               <Col sm={12} md={6}>
                 <label htmlFor="proimg">
-                  <input id='proimg' type="file" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
+                  <input id='proimg' type="file" style={{ display: 'none' }} key={key} onChange={(e) => handleFile(e)} />
                   <img src={preview ? preview : "https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt="" width={"100%"} />
                 </label>
 
