@@ -1,16 +1,18 @@
-import React, { createContext, useState } from 'react'
 
+import React, { createContext, useState } from "react"
+
+// 2) create context using createcontext
 export const addResponseContext = createContext({})
 
-function DataShare({children}) {
-    const [addResponse, setAddResponse] = useState({});
-    
+//1)load rfce
+function DataShare({ children }) {
+  const [addResponse, setAddResponse] = useState({})
+
   return (
-    // Access value of context
-    <addResponseContext.Provider value={{addResponse,setAddResponse}}>
-        {children}
+    // to access the value of the context for every components
+    <addResponseContext.Provider value={{ addResponse, setAddResponse }}>
+      {children}
     </addResponseContext.Provider>
-   
   )
 }
 

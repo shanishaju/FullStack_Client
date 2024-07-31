@@ -7,6 +7,7 @@ import { addProjectApi } from '../services/allApi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { addResponseContext } from '../context/DataShare';
+import { useContext } from 'react';
 
 
 
@@ -15,161 +16,162 @@ function AddProject() {
   // Modal use states
 
   const [show, setShow] = useState(false);
-  const [projectDetails, setProjectDetails] =useState({
-    title:"",
-    language:"",
-    github:"",
-    website:"",
-    overview:"",
-    proimg:""
+  const [projectDetails, setProjectDetails] = useState({
+    title: "",
+    language: "",
+    github: "",
+    website: "",
+    overview: "",
+    proimg: ""
 
   })
-  
-  const [preview , setPreview] = useState("")
+
+  const [preview, setPreview] = useState("")
   const [token, setToken] = useState("")
- 
-  // for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
-  const {setAddResponse} = useContext (addResponseContext)
+
+  // useContext hook || for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
+  const { setAddResponse } = useContext(addResponseContext)
   console.log(projectDetails);
-  const handleFile=(e)=>{
+  const handleFile = (e) => {
     // console.log(e.target.files[0]);
-    setProjectDetails({...projectDetails,proimg:e.target.files[0]})
+    setProjectDetails({ ...projectDetails, proimg: e.target.files[0] })
   }
 
 
   const handleClose = () => setShow(false);
-  const handleShow = () => {setShow(true)
+  const handleShow = () => {
+    setShow(true)
     handleCancel()
   }
-  const handleCancel=()=>{
+  const handleCancel = () => {
     setProjectDetails({
-      title:"",
-      language:"",
-      github:"",
-      website:"",
-      overview:"",
-      proimg:""
+      title: "",
+      language: "",
+      github: "",
+      website: "",
+      overview: "",
+      proimg: ""
     })
     setPreview("")
 
- 
-}
-     // Useeffect to convert image into URL
 
-  useEffect(()=>{
-    if(projectDetails.proimg){
+  }
+  // Useeffect to convert image into URL
+
+  useEffect(() => {
+    if (projectDetails.proimg) {
       //createObjectURL
       setPreview(URL.createObjectURL(projectDetails.proimg));
     }
-  },[projectDetails.proimg])
+  }, [projectDetails.proimg])
 
 
-  useEffect(()=>{
-    if(sessionStorage.getItem("token")){
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
       setToken(sessionStorage.getItem("token"))
     }
-  },[])
- 
-   
-  const handleAdd = async(e)=>{
+  }, [])
+
+
+  const handleAdd = async (e) => {
     e.preventDefault()
 
-    const {title,language,github,website,overview,proimg} =projectDetails
+    const { title, language, github, website, overview, proimg } = projectDetails
 
-    if (!title || !language || !github || !website || !overview || !proimg){
+    if (!title || !language || !github || !website || !overview || !proimg) {
       toast.info("please fill the form compltely")
     }
-    else{
+    else {
       //api
       //use formdate bcoz of uploaded content
       const reqBody = new FormData()
-      reqBody.append("title",title)
-      reqBody.append("language",language)
-      reqBody.append("github",github)
-      reqBody.append("website",website)
-      reqBody.append("overview",overview)
-      reqBody.append("proimg",proimg)
+      reqBody.append("title", title)
+      reqBody.append("language", language)
+      reqBody.append("github", github)
+      reqBody.append("website", website)
+      reqBody.append("overview", overview)
+      reqBody.append("proimg", proimg)
 
-    if(token){
-      const reqHeader ={
-        "Content-Type":"multipart/form-data",
-        //token sending for ensuring user login
-        "Authorization":`Bearer ${token}`
-      }
+      if (token) {
+        const reqHeader = {
+          "Content-Type": "multipart/form-data",
+          //token sending for ensuring user login
+          "Authorization": `Bearer ${token}`
+        }
 
-      const result = await addProjectApi(reqBody,reqHeader)
-      console.log(result);
-      if(result.status == 200){
-        toast.success('Project Added Successfully')
-        handleClose()
-        // here is where data is being changed so call context here
-        setAddResponse(result.data)
+        const result = await addProjectApi(reqBody, reqHeader)
+        console.log(result);
+        if (result.status == 200) {
+          toast.success('Project Added Successfully')
+          handleClose()
+          // here is where data is being changed so call context here
+          setAddResponse(true)
+        }
       }
-    }
-    else{
-      toast.error('please login')
-    }
+      else {
+        toast.error('please login')
+      }
     }
   }
   return (
 
     <>
 
-  <div className='ms-auto'>
-  <button className='btn btn-success' onClick={handleShow}>Add Project</button>
+      <div className='ms-auto'>
+        <button className='btn btn-success' onClick={handleShow}>Add Project</button>
 
-<Modal show={show} onHide={handleClose}size='lg' >
-   <Modal.Header closeButton>
-     <Modal.Title className='text-success'>Add Project Details</Modal.Title>
-   </Modal.Header>
-   <Modal.Body>
-     <Row>
-       <Col sm={12} md={6}>
-       <label htmlFor="proimg">
-         <input id='proimg' type="file"  style={{display:'none'}} onChange={(e)=>handleFile(e)}/>
-         <img src={preview?preview:"https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt=""  width={"100%"}/>
-       </label>
-       
-       </Col>
-       <Col sm={12} md={6}>
-       <form action="" className='p-3'></form>
-       <div className="mb-3">
-         <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e)=> setProjectDetails({...projectDetails,title:e.target.value})}/>
-       </div>
-       <div className="mb-3">
-       <input type="text" placeholder='language ' value={projectDetails.language}className='form-control'  onChange={(e)=> setProjectDetails({...projectDetails,language:e.target.value})}/>
+        <Modal show={show} onHide={handleClose} size='lg' >
+          <Modal.Header closeButton>
+            <Modal.Title className='text-success'>Add Project Details</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Row>
+              <Col sm={12} md={6}>
+                <label htmlFor="proimg">
+                  <input id='proimg' type="file" style={{ display: 'none' }} onChange={(e) => handleFile(e)} />
+                  <img src={preview ? preview : "https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt="" width={"100%"} />
+                </label>
 
-       </div>
-       <div className="mb-3">
-       <input type="text" placeholder='github 'value={projectDetails.github} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,github:e.target.value})}/>
+              </Col>
+              <Col sm={12} md={6}>
+                <form action="" className='p-3'></form>
+                <div className="mb-3">
+                  <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, title: e.target.value })} />
+                </div>
+                <div className="mb-3">
+                  <input type="text" placeholder='language ' value={projectDetails.language} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, language: e.target.value })} />
 
-       </div>
-       <div className="mb-3">
-       <input type="text" placeholder='website 'value={projectDetails.website} className='form-control' onChange={(e)=>setProjectDetails({...projectDetails,website:e.target.value})}/>
+                </div>
+                <div className="mb-3">
+                  <input type="text" placeholder='github ' value={projectDetails.github} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, github: e.target.value })} />
 
-       </div>
-       <div className="mb-3">
-         <textarea name="" id=""placeholder='overview ' value={projectDetails.overview}className='form-control' rows={4} onChange={(e)=>setProjectDetails({...projectDetails,overview:e.target.value})}></textarea>
-       </div>
-       <div className="mb-3"></div>
+                </div>
+                <div className="mb-3">
+                  <input type="text" placeholder='website ' value={projectDetails.website} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, website: e.target.value })} />
 
-       </Col>
-     </Row>
-     
-     </Modal.Body>
-   <Modal.Footer>
-     <Button variant="warning" onClick={handleCancel} >
-       Cancel
-     </Button>
-     <Button variant="success" onClick={handleAdd}>
-       Add
-     </Button>
-   </Modal.Footer>
+                </div>
+                <div className="mb-3">
+                  <textarea name="" id="" placeholder='overview ' value={projectDetails.overview} className='form-control' rows={4} onChange={(e) => setProjectDetails({ ...projectDetails, overview: e.target.value })}></textarea>
+                </div>
+                <div className="mb-3"></div>
 
- </Modal>
+              </Col>
+            </Row>
 
-  </div>
-  <ToastContainer theme='colored' position='top-center' autoClose = '2000'/>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="warning" onClick={handleCancel} >
+              Cancel
+            </Button>
+            <Button variant="success" onClick={handleAdd}>
+              Add
+            </Button>
+          </Modal.Footer>
+
+        </Modal>
+
+      </div>
+      <ToastContainer theme='colored' position='top-center' autoClose='2000' />
     </>
   )
 }
