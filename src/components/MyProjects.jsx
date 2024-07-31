@@ -7,14 +7,15 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { userProjectApi } from '../services/allApi'
 import { deleteProjectApi } from '../services/allApi'
 import { addResponseContext } from '../context/DataShare'
+import { Link } from 'react-router-dom';
 
 function MyProjects() {
   const [userProject, setUserProject] = useState([])
   // call the variable addResponse here || no refresh
   const { addResponse } = useContext(addResponseContext)
   // usestate for delete screen refresh
-  const [deleteStatus, setDeleteStatus] = useState(false) 
-  
+  const [deleteStatus, setDeleteStatus] = useState(false)
+
   const getUserProject = async () => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token")
@@ -26,21 +27,22 @@ function MyProjects() {
       setUserProject(result.data)
     }
   }
-  
+
   console.log(userProject)
 
   // Deleting project
   const handleDelete = async (id) => {
     const result = await deleteProjectApi(id)
     console.log(result)
-    if (result.status === 200) {
+    if (result.status == 200) {
       setDeleteStatus(true)
     }
   }
   // || no refresh
   useEffect(() => {
     getUserProject()
-  },[addResponse, deleteStatus])
+    setDeleteStatus(false)
+  }, [addResponse, deleteStatus])
 
   return (
     <div className='shadow px-3 py-4 rounded'>
@@ -54,8 +56,8 @@ function MyProjects() {
             <h5>{item.title}</h5>
             <div className="d-flex">
               <EditProject />
-              <FontAwesomeIcon icon={faGlobe} className='text-warning ms-3' />
-              <FontAwesomeIcon icon={faGithub} className='text-success ms-3' />
+              <Link to={item?.website} target='_blank'><FontAwesomeIcon icon={faGlobe} className='text-warning ms-3' /></Link>
+              <Link to={item?.github} target='_blank'> <FontAwesomeIcon icon={faGithub} className='text-success ms-3' /></Link>
               <FontAwesomeIcon icon={faTrash} onClick={() => handleDelete(item?._id)} className='text-danger ms-3 me-5' />
             </div>
           </div>
