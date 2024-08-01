@@ -1,6 +1,6 @@
 import { faPen, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { serverUrl } from '../services/serverUrl';
 import { editProjectApi } from '../services/allApi';
+import { editResponseContext } from '../context/DataShare';
 
 
 
@@ -25,8 +26,14 @@ function EditProject({ project }) {
   })
   const [preview, setPreview] = useState("")
   const [key, setKey] = useState(0)
-  const handleClose = () => setShow(false);
 
+ const {setEditResponse} = useContext(editResponseContext)
+
+  const handleClose = () => {
+    setShow(false);
+    handleClose1()
+  }
+         
   const handleShow = () => setShow(true);
   //edit profile
 
@@ -93,6 +100,8 @@ function EditProject({ project }) {
         if (result.status == 200) {
           toast.success('project updated successfully')
           handleClose()
+          setEditResponse(result.data)
+
         }
         else {
           toast.error('something went wrong')
@@ -108,6 +117,8 @@ function EditProject({ project }) {
         if (result.status == 200) {
           toast.success('project updated successfully')
           handleClose()
+          setEditResponse(result.data)
+
         }
         else {
           toast.error('something went wrong')

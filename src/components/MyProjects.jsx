@@ -6,7 +6,7 @@ import { faGlobe, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { userProjectApi } from '../services/allApi'
 import { deleteProjectApi } from '../services/allApi'
-import { addResponseContext } from '../context/DataShare'
+import { addResponseContext, editResponseContext } from '../context/DataShare'
 import { Link } from 'react-router-dom';
 
 function MyProjects() {
@@ -15,7 +15,7 @@ function MyProjects() {
   const { addResponse } = useContext(addResponseContext)
   // usestate for delete screen refresh
   const [deleteStatus, setDeleteStatus] = useState(false)
-
+  const { editResponse } = useContext(editResponseContext)
   const getUserProject = async () => {
     if (sessionStorage.getItem("token")) {
       const token = sessionStorage.getItem("token")
@@ -42,7 +42,7 @@ function MyProjects() {
   useEffect(() => {
     getUserProject()
     setDeleteStatus(false)
-  }, [addResponse, deleteStatus])
+  }, [addResponse, deleteStatus,editResponse])
 
   return (
     <div className='shadow px-3 py-4 rounded'>
