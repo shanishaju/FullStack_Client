@@ -66,7 +66,7 @@ function EditProject({ project }) {
   const handleUpdate = async (e) => {
     e.preventDefault()
 
-    const { id, title, language, github, website, overview, proimg } = projectDetails
+    const { id, title, language, github, website, overview } = projectDetails
 
     if (!title || !language || !github || !website || !overview) {
       toast.info("please fill the form compltely")
