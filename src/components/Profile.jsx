@@ -20,7 +20,7 @@ function Profile() {
     profile: "",
   });
   const [existingimg, setExistingimg] = useState("")
-
+  const [editstatus, setEditStatus] = useState(false)
   const [preview, setPreview] = useState("")
   const handleProfileFile = (e) => {
     e.preventDefault()
@@ -46,14 +46,16 @@ function Profile() {
         email: user.email,
         password: user.password,
         github: user.github,
-        linkedin: user.linkedin,
+        linkedin: user.linkedin
       })
-      setExistingimg(user.Profile);
+      setExistingimg(user.profile);
     }
-  }, [])
+    setEditStatus(false)
+
+  }, [editstatus])
 
   const handleProfileUpdate = async () => {
-    const { username, email, password, github, linkedin } = userDetails
+    const { username, email, password, github, linkedin, profile } = userDetails
     if (!username || !email || !password || !github || !linkedin) {
       toast.info("pls fill the fields")
     }
@@ -77,8 +79,8 @@ function Profile() {
         const result = await editProfileApi(reqBody, reqHeader)
         if (result.status == 200) {
           toast.success('profile updated successfully')
-          sessionStorage.setItem("exsistingUser",JSON.stringify(result.data))
-
+          sessionStorage.setItem("exsistingUser", JSON.stringify(result.data))
+          setEditStatus(true)
         }
         else {
           toast.error('something went wrong')
@@ -90,9 +92,11 @@ function Profile() {
           "Authorization": `Bearer ${token}`
         }
         const result = await editProfileApi(reqBody, reqHeader)
-        if (result.status == 200) {
+        if (result.status = 200) {
           toast.success('profile updated successfully')
-          sessionStorage.setItem("exsistingUser",JSON.stringify(result.data))
+          sessionStorage.setItem("exsistingUser", JSON.stringify(result.data))
+          setEditStatus(true)
+
         }
         else {
           toast.error('something went wrong')
@@ -183,7 +187,7 @@ function Profile() {
                 />
               </div>
 
-              <button className="btn btn-success w-100 mb-3" onClick={handleProfileUpdate} >Update</button>
+              <button type="button" className="btn btn-success w-100 mb-3" onClick={handleProfileUpdate} >Update</button>
             </div>
           </div>
         </Collapse>

@@ -30,14 +30,14 @@ const getHomeProject =async()=>{
 
   return (
     <>
-      <div className='container-fluid bg-success' style={{height:'100vh' }}>
+      <div className='container-fluid ' style={{height:'100vh', backgroundColor:"#0B0C10" }}>
           <Row className='align-items-center'>
             <Col xm={12} md={6} className='ps-5'>
-            <h1 style={{color:'white', fontSize:'70px'}}>Project Fair</h1>
-            <p style={{color:'black'}}>One stop destination for all software development projects</p>
-            { !isLogin? <Link to={'/login'}>             <button className='btn text-light'> Get started<FontAwesomeIcon icon={faArrowRight} bounce className='ms-2' /></button>
+            <h1 style={{color:"#66FCF1", fontSize:'70px'}}>ProjectVault</h1>
+            <p style={{color:'#c5c6c7'}}>Shining a light on your coding brilliance.</p>
+            { !isLogin? <Link to={'/login'} style={{color:"#c5c6c7"}}><button className='btn ' style={{color:"#66FCF1"}}> Get started<FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}} bounce className='ms-2' /></button>
             </Link> :
-             <Link to={'/dashboard'}><button className='btn text-light '>Manage projects<FontAwesomeIcon icon={faArrowRight} bounce className='ms-2' /></button>
+             <Link to={'/dashboard'}><button className='btn' style={{color:"#c5c6c7", borderColor:"#66FCF1"}}>Manage projects<FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}} bounce className='ms-2' /></button>
 
              </Link>}
 
@@ -48,8 +48,9 @@ const getHomeProject =async()=>{
          
           </Row>
       </div>
-      <div className='container-fluid' style={{height:"100vh"}}>
-        <h1 className=' text-center mt-5'>Explore our projects</h1>
+      <div className='container-fluid' style={{height:"100vh",backgroundColor:"#0B0C10"}}>
+        <h1 className=' text-center pt-5' style={{color:"#66FCF1"}}>See What We've Built
+        </h1>
         <div className="row">
          {homeProject?.length>0? 
          homeProject?.map((item)=>(
@@ -60,7 +61,7 @@ const getHomeProject =async()=>{
          :null}
 
         </div>
-        <Link to={'/project'}><h5 className='text-center mt-5 '>See more projects</h5></Link>
+        <Link to={'/project'}><h5 className='text-center mt-5 '>Browse More</h5></Link>
       </div>
     </>
   )

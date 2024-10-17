@@ -1,4 +1,4 @@
-import { faFacebook, faInstagram, faLinkedin, faStackOverflow, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faInstagram, faLinkedin, faSlack, faStackOverflow, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
@@ -7,9 +7,9 @@ function Footer() {
 
   return (
 
-  <div className='row w-100 mt-5 p-3 bg-success'>
+  <div className='row w-100 mt-5 p-5 ' style={{backgroundColor:"#1F2833"}}>
         <div className="col-md-4 p-4 ms-md-5">
-            <h4 className='text-light'> <FontAwesomeIcon icon={faStackOverflow} bounce className='me-3 fs-2' />Project Fair</h4>
+            <h4 className='text-light'> <FontAwesomeIcon icon={faSlack} bounce className='me-3 fs-2' />ProjectVault</h4>
             <p style={{textAlign:'justify'}}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate dignissimos provident minima id nisi ut eaque tenetur corrupti distinctio, et illo numquam </p>
         </div>
         <div className="col-md-2 p-4 justify-content-center d-md-flex">
