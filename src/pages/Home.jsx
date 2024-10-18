@@ -30,7 +30,7 @@ const getHomeProject =async()=>{
 
   return (
     <>
-      <div className='container-fluid ' style={{height:'100vh', backgroundColor:"#0B0C10" }}>
+      <div className='container-fluid ' style={{height:'100vh', backgroundColor:"#0e1746" }}>
           <Row className='align-items-center'>
             <Col xm={12} md={6} className='ps-5'>
             <h1 style={{color:"#66FCF1", fontSize:'70px'}}>ProjectVault</h1>
@@ -43,7 +43,7 @@ const getHomeProject =async()=>{
 
             </Col>
             <Col xm={12} md={6}>
-            <img src="https://projectfair-ts-frontend.vercel.app/assets/designer-CuSJ9Yh0.svg" alt=""  className='w-75 ' style={{marginTop:'100px'}}/>
+            <img src="https://cdn.dribbble.com/users/2585799/screenshots/6555657/__2_3_____.gif" alt=""  className='w-75 ms-5 ' style={{marginTop:'100px'}}/>
             </Col>
          
           </Row>

@@ -11,8 +11,8 @@ function PageNoteFound() {
        
     </div>
     <div className='d-flex align-items-center justify-content-center flex-column'> 
-      <h1>Look's like you're lost</h1>
-    <button  className='btn btn-primary '> <Link to='/' style={{textDecoration:'none', color:'white'}}> <FontAwesomeIcon icon={faArrowRight} flip className='me-1' /> back to home</Link> </button>
+      <h1 style={{color:"#0e1746"}}>Look's like you're lost</h1>
+    <button  className='btn' style={{color:"#0e1746",backgroundColor:"#0e1746"}}> <Link to='/' style={{textDecoration:'none', color:'white'}}> <FontAwesomeIcon icon={faArrowRight} flip className='me-1' /> back to home</Link> </button>
     </div>
 
     </>
