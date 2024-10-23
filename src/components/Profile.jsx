@@ -108,7 +108,7 @@ function Profile() {
 
   return (
     <>
-      <div className="shadow mx-4 p-3 rounded ">
+      <div className="shadow mx-4 p-3 rounded">
         <div
           className="d-flex justify-content-between mt-3"
           onMouseEnter={() => setOpen(true)}
