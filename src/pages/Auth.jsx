@@ -1,4 +1,4 @@
-import { faStackOverflow } from '@fortawesome/free-brands-svg-icons'
+import { faSlack, faStackOverflow } from '@fortawesome/free-brands-svg-icons'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
@@ -82,14 +82,17 @@ function Auth({ register }) {
       <div className='container-fluid d-flex justify-content-center align-items-center flex-column' style={{ height: '100vh' }}>
         <Link to={'/'} className='text-decoration-none'><h5 className='text-danger container mt-5'> <FontAwesomeIcon icon={faArrowLeft} beat className='me-2' />Back to home</h5>
         </Link>
-        <div className='container w-75 bg-success mt-3 rounded' >
+        <div className='container w-100  mt-3 rounded' style={{ backgroundColor: "#0e1746" }} >
           <Row>
             <Col md={6} sm={12} className='p-5 d-flex justify-content-center align-items-center' >
-              <img src="https://icon-library.com/images/admin-login-icon/admin-login-icon-20.jpg" alt="" className='w-75'
+              {/* <img src="https://icon-library.com/images/admin-login-icon/admin-login-icon-20.jpg" alt="" className='w-75'
+              /> */}
+              <img src="https://i.pinimg.com/originals/0c/84/5e/0c845e2857bbb47bec9dad40c2222ada.gif" alt="" className='w-100'
               />
             </Col>
             <Col md={6} sm={12} className='d-flex justify-content-center align-items-center text-light flex-column'>
-              <h3 className='mb-3'>  <FontAwesomeIcon icon={faStackOverflow} className='me-3 ' /> project Fiar
+              <h3 className='mb-3'>  <FontAwesomeIcon icon={faSlack} className='me-3 ' /> ProjectVault
+
               </h3>
               {register ? <h5>Sign up to your Account</h5> :
                 <h5>Sign in to your Account</h5>
