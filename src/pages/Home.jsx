@@ -43,7 +43,7 @@ const getHomeProject =async()=>{
   <Row className=' d-flex align-items-center justify-content-center  p-5'>
     <Col xm={12} md={6} className='ps-5  ' style={{marginTop:"10%"}}>
 
-      <h1 style={{color:"#66FCF1", fontSize:'100px'}}> <FontAwesomeIcon icon={faSlack} bounce className='me-3 ' style={{ color: '66FCF1' ,fontSize:'90px'}} />
+      <h1 style={{color:"#66FCF1", fontSize:'100px'}}> <FontAwesomeIcon icon={faSlack}  className='me-3 ' style={{ color: '66FCF1' ,fontSize:'90px'}} />
       Project Vault</h1>
       <p style={{color:'#c5c6c7',fontSize:'20px'}}>Safeguard Your Projects, Display with Confidence.
       Your go-to platform for secure project management and seamless sharing.</p>
@@ -51,13 +51,13 @@ const getHomeProject =async()=>{
         <Link to={'/login'} style={{color:"#c5c6c7"}}>
           <button className='btn btn-center' style={{color:"#66FCF1"}}>
             Get started 
-            <FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}} bounce className='ms-2' />
+            <FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}}  className='ms-2' />
           </button>
         </Link> :
         <Link to={'/dashboard'}>
           <button className='btn btn-center' style={{color:"#c5c6c7", borderColor:"#66FCF1"}}>
             Manage projects 
-            <FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}} bounce className='ms-2' />
+            <FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}}  className='ms-2' />
           </button>
         </Link>
       }

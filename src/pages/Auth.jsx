@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // taking data from input box for sending to backend -- after done the backend
-function Auth({ register }) {
+function Auth({register}) {
 
   // giving path after signing up
   const navigate = useNavigate()
