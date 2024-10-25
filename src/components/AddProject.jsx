@@ -142,14 +142,14 @@ function AddProject() {
               <Col sm={12} md={6}>
                 <form action="" className='p-3'></form>
                 <div className="mb-3">
-                  <input type="text" placeholder='title ' value={projectDetails.title} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, title: e.target.value })} />
+                  <input type="text" placeholder='title' value={projectDetails.title} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, title: e.target.value })} />
                 </div>
                 <div className="mb-3">
-                  <input type="text" placeholder='language ' value={projectDetails.language} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, language: e.target.value })} />
+                  <input type="text" placeholder='language' value={projectDetails.language} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, language: e.target.value })} />
 
                 </div>
                 <div className="mb-3">
-                  <input type="text" placeholder='github ' value={projectDetails.github} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, github: e.target.value })} />
+                  <input type="text" placeholder='github' value={projectDetails.github} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, github: e.target.value })} />
 
                 </div>
                 <div className="mb-3">

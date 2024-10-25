@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import { homeProjectApi } from '../services/allApi'
 import Footer from '../components/Footer'
 import { faSlack } from '@fortawesome/free-brands-svg-icons'
+import Header from '../components/Header'
 
 function Home() {
   const [isLogin , setIsLogin] = useState(false)
@@ -32,6 +33,7 @@ const getHomeProject =async()=>{
 
   return (
     <>
+
 <div className='container-fluid' style={{ 
     height: '100vh', 
     backgroundColor: "#0e1746", 

@@ -25,7 +25,7 @@ function Dashboard() {
 
     <>
       <Header dash={true} />
-      <h4 className='mt-4 ms-3' >Welcome <span className='text-danger'> {user}</span></h4>
+      <h4 className='mt-4 ms-3' >Welcome <span className='text-success'> {user}</span></h4>
       <div>
         <Row className='mt-5 container-fluid p-5'>
           <Col md={8} sm={12}>
