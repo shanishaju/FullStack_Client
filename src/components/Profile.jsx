@@ -112,6 +112,8 @@ function Profile() {
         <div
           className="d-flex justify-content-between mt-3"
           onMouseEnter={() => setOpen(true)}
+          // onMouseLeave={()=> setOpen(true)}
+
         >
           <h5 className="mt-3 text-success"> Profile</h5>
           <button
