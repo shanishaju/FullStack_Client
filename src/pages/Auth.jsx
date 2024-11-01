@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // taking data from input box for sending to backend -- after done the backend
-function Auth({register}) {
+function Auth({ register }) {
 
   // giving path after signing up
   const navigate = useNavigate()
@@ -79,8 +79,8 @@ function Auth({register}) {
   return (
 
     <>
-      <div className='container-fluid d-flex justify-content-center align-items-center flex-column' style={{ height: '100vh',backgroundColor: "#0e1746"  }}>
-        <Link to={'/'} className='text-decoration-none text-start '><h5 className=' container mt-5 text-start 'style={{color:"#66FCF1"}}> <FontAwesomeIcon icon={faHome} beat className='me-2' />Back to home</h5>
+      <div className='container-fluid d-flex justify-content-center align-items-center flex-column' style={{ height: '100vh', backgroundColor: "#0e1746" }}>
+        <Link to={'/'} className='text-decoration-none text-start '><h5 className=' container mt-5 text-start ' style={{ color: "#66FCF1" }}> <FontAwesomeIcon icon={faHome} beat className='me-2' />Back to home</h5>
         </Link>
         <div className='container w-100  mt-3 rounded' >
           <Row>
@@ -91,7 +91,7 @@ function Auth({register}) {
               />
             </Col>
             <Col md={6} sm={12} className='d-flex justify-content-center align-items-center text-light flex-column'>
-              <h3 className='mb-3' style={{color:"#66FCF1"}}>  <FontAwesomeIcon icon={faSlack} className='me-1 ' /> 
+              <h3 className='mb-3' style={{ color: "#66FCF1" }}>  <FontAwesomeIcon icon={faSlack} className='me-1 ' />
 
               </h3>
               {register ? <h5>Sign up to your Account</h5> :
