@@ -70,7 +70,7 @@ const getHomeProject =async()=>{
   </Row>
 </div>
 
-      <div className='container-fluid' style={{height:"100vh",backgroundColor:"#0B0C10"}}>
+      <div className='container-fluid mb-5' style={{height:"100vh",backgroundColor:"#0B0C10"}}>
         <h1 className=' text-center pt-5' style={{color:"#66FCF1"}}>See What We've Built
         </h1>
         <div className="row">
@@ -86,7 +86,17 @@ const getHomeProject =async()=>{
         <Link to={'/project'}><h5 className='text-center mt-5 '>Browse More</h5></Link>
 
       </div>
-      <Footer/>
+      {/* <div className='pt-5' style={{backgroundColor:"#0B0C10"}}>
+          <Row className='mt-5'>
+            <Col xm={0} md={12}>
+
+            <Footer/>
+
+            </Col>
+
+
+          </Row>
+      </div> */}
 
     </>
   )
