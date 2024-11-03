@@ -79,19 +79,25 @@ function Auth({ register }) {
   return (
 
     <>
-      <div className='container-fluid d-flex justify-content-center align-items-center flex-column' style={{ height: '100vh', backgroundColor: "#0e1746" }}>
+      <div className='container-fluid d-flex justify-content-center align-items-center flex-column ' style={{ height: '100vh', backgroundColor: "#0e1746" }}>
         <Link to={'/'} className='text-decoration-none text-start '><h5 className=' container mt-5 text-start ' style={{ color: "#66FCF1" }}> <FontAwesomeIcon icon={faHome} beat className='me-2' />Back to home</h5>
         </Link>
         <div className='container w-100  mt-3 rounded' >
           <Row>
-            <Col md={6} sm={12} className='p-5 d-flex justify-content-center align-items-center' >
+            <Col md={6} sm={12} className='p-5 d-flex justify-content-center align-items-center border border-success mb-sm-5 mb-md-0' style={{
+                borderTopLeftRadius: '50%', borderBottomLeftRadius: '50%'
+
+            }} >
               {/* <img src="https://icon-library.com/images/admin-login-icon/admin-login-icon-20.jpg" alt="" className='w-75'
               /> */}
-              <img src="https://i.pinimg.com/originals/0c/84/5e/0c845e2857bbb47bec9dad40c2222ada.gif" alt="" className='w-100'
+              <img src="https://ashakirangroup.net/web_assets/img/giflogin.gif" alt="" className='w-100'
               />
             </Col>
-            <Col md={6} sm={12} className='d-flex justify-content-center align-items-center text-light flex-column'>
-              <h3 className='mb-3' style={{ color: "#66FCF1" }}>  <FontAwesomeIcon icon={faSlack} className='me-1 ' />
+            <Col md={6} sm={12} className='d-flex justify-content-center align-items-center text-light flex-column border border-success' style={{
+                borderTopRightRadius: '50%', borderBottomRightRadius: '50%'
+
+            }}>
+              <h3 className='mb-3 pt-sm-2' style={{ color: "#66FCF1" }}>  <FontAwesomeIcon icon={faSlack} className='me-1 ' />
 
               </h3>
               {register ? <h5>Sign up to your Account</h5> :

@@ -89,7 +89,7 @@ function AddProject() {
     }
     else {
       //api
-      //use formdate bcoz of uploaded content
+      //use FormData bcoz of uploaded content
       const reqBody = new FormData()
       reqBody.append("title", title)
       reqBody.append("language", language)

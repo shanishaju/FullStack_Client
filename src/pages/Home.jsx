@@ -25,7 +25,7 @@ const getHomeProject =async()=>{
       setIsLogin(true)
     }
     else{
-      setIsLogin(true)
+      setIsLogin(false)
     }
     getHomeProject()
 
@@ -51,7 +51,7 @@ const getHomeProject =async()=>{
       Your go-to platform for secure project management and seamless sharing.</p>
       { !isLogin ? 
         <Link to={'/login'} style={{color:"#c5c6c7"}}>
-          <button className='btn btn-center' style={{color:"#66FCF1"}}>
+          <button className='btn btn-center' style={{color:"#c5c6c7", borderColor:"#66FCF1"}}>
             Get started 
             <FontAwesomeIcon icon={faArrowRight} style={{color:"#66FCF1"}}  className='ms-2' />
           </button>
