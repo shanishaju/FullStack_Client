@@ -15,12 +15,16 @@ Responsive Design: Accessible across various devices.
 
 # Technologies Used
 Frontend: React.js, HTML, CSS, SCSS, Bootstrap
+
 Backend: Node.js, Express.js
+
 Database: MongoDB
+
 Other: Git for version control
 
 # Getting Started
-Prerequisites
 Node.js 
+
 MongoDB for database
+
 Basic knowledge of Git
