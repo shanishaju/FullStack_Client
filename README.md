@@ -1,5 +1,5 @@
 # Project Vault 
-ProjectVault " is a full stack project for managing and showcasing various individual projects. It allows users to add and remove projects with a user-friendly interface built using HTML, CSS, Bootstrap, and React.js. 
+Project Vault is a full stack project for managing and showcasing various individual projects. It allows users to add and remove projects with a user-friendly interface built using HTML, CSS, Bootstrap, and React.js. 
 
 
 # React + Vite

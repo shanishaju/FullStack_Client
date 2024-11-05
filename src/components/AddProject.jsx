@@ -33,6 +33,8 @@ function AddProject() {
   // useContext hook || for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
   const { setAddResponse } = useContext(addResponseContext)
   console.log(projectDetails);
+  
+  //file collecting
   const handleFile = (e) => {
     // console.log(e.target.files[0]);
     setProjectDetails({ ...projectDetails, proimg: e.target.files[0] })
@@ -80,6 +82,7 @@ function AddProject() {
 
 
   const handleAdd = async (e) => {
+    // prevent the default action of an event.
     e.preventDefault()
 
     const { title, language, github, website, overview, proimg } = projectDetails
