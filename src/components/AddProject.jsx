@@ -25,7 +25,7 @@ function AddProject() {
     proimg: ""
 
   })
-
+  
   const [preview, setPreview] = useState("")
   const [token, setToken] = useState("")
   const [key, setKey] = useState(0)
@@ -33,7 +33,7 @@ function AddProject() {
   // useContext hook || for accessing context api 29/07 || where data is updated call the function setAddResponse || Assign the result into setAddResponse
   const { setAddResponse } = useContext(addResponseContext)
   console.log(projectDetails);
-  
+
   //file collecting
   const handleFile = (e) => {
     // console.log(e.target.files[0]);
@@ -64,11 +64,12 @@ function AddProject() {
     }
 
   }
+
   // Useeffect to convert image into URL
 
   useEffect(() => {
     if (projectDetails.proimg) {
-      //createObjectURL
+      //createObjectURL 
       setPreview(URL.createObjectURL(projectDetails.proimg));
     }
   }, [projectDetails.proimg])
@@ -81,7 +82,7 @@ function AddProject() {
   }, [])
 
 
-  const handleAdd = async (e) => {
+  const handleAdd = async(e) => {
     // prevent the default action of an event.
     e.preventDefault()
 
@@ -92,7 +93,7 @@ function AddProject() {
     }
     else {
       //api
-      //use FormData bcoz of uploaded content
+      //Inorder to send uploaded content use FormData
       const reqBody = new FormData()
       reqBody.append("title", title)
       reqBody.append("language", language)
