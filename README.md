@@ -1,6 +1,7 @@
 # Project Vault 
 This application allows users to showcase their projects, providing a platform to display project details with user login, profile creation, and project management features.
 
+![alt text](image.png)
 
 # Features
 User Authentication: Users can sign up, log in, and manage their profiles.
