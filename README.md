@@ -1,12 +1,26 @@
 # Project Vault 
-Project Vault is a full stack project for managing and showcasing various individual projects. It allows users to add and remove projects with a user-friendly interface built using HTML, CSS, Bootstrap, and React.js. 
+This application allows users to showcase their projects, providing a platform to display project details with user login, profile creation, and project management features.
 
 
-# React + Vite
+# Features
+User Authentication: Users can sign up, log in, and manage their profiles.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard: Centralized dashboard for managing projects and profile.
 
-Currently, two official plugins are available:
+Project Management: Add, Edit, and Remove Project, View project details
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Profile Creation: Users can create and edit their profiles.
+
+Responsive Design: Accessible across various devices.
+
+# Technologies Used
+Frontend: React.js, HTML, CSS, SCSS, Bootstrap
+Backend: Node.js, Express.js
+Database: MongoDB
+Other: Git for version control
+
+# Getting Started
+Prerequisites
+Node.js 
+MongoDB for database
+Basic knowledge of Git
