@@ -105,7 +105,7 @@ function AddProject() {
       if (token) {
         const reqHeader = {
           "Content-Type": "multipart/form-data",
-          //token sending for ensuring user login
+          //token sending for ensuring user login - token Authorization 
           "Authorization": `Bearer ${token}`
         }
 
