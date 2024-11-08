@@ -29,17 +29,17 @@ function Auth({ register }) {
     const { username, email, password } = userDetails
 
     if (!username || !email || !password) {
-      toast.info('please fill the form completely')
+      toast.info('Please fill out the form completely.');
     }
     else {
       const response = await registerApi(userDetails)
 
       if (response.status == 200) {
-        toast.success('Registration successfully')
+        toast.success('Registration successful!');
         navigate('/login')
       }
       else {
-        toast.error('Something went wrong. Please try again after some time.');
+        toast.error('We’re fixing some issues. Please try again soon.');
       }
     }
   }
