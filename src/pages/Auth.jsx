@@ -70,7 +70,7 @@ function Auth({ register }) {
 
       }
       else {
-        toast.error("Email or password doesn't match. Please try again.")
+        toast.error("email or password doesn't match. Please try again.")
       }
       console.log(response);
 
