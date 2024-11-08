@@ -39,7 +39,7 @@ function Auth({ register }) {
         navigate('/login')
       }
       else {
-        toast.error('something went wrong.Please after sometimes')
+        toast.error('Something went wrong. Please try again after some time.');
       }
     }
   }
