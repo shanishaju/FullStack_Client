@@ -129,7 +129,7 @@ function Auth({ register }) {
                   </div> :
                     <div>
                       <button type='button' className='btn  w-100  ' style={{backgroundColor:"#66FCF1"}} onClick={handleLogin}>  Login</button>
-                      <p className='mt-3'>New user ragister <Link to={'/register'} className='' style={{color:"#66FCF1"}}>here</Link></p>
+                      <p className='mt-3'>New user register <Link to={'/register'} className='' style={{color:"#66FCF1"}}>here</Link></p>
 
                     </div>}
                 </div>
