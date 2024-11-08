@@ -106,30 +106,30 @@ function Auth({ register }) {
               <form className='mt-4 w-50'>
 
                 {register && <div className="mb-3">
-                  <input type="text" placeholder='username' className='form-control ' onChange={(e) =>
+                  <input type="text" placeholder='username' className='w-100 p-2 ' onChange={(e) =>
                     setUserDetails({ ...userDetails, username: e.target.value })
                   } />
                 </div>}
                 <div className="mb-3">
-                  <input type="text" placeholder='email' className='form-control' onChange={(e) =>
+                  <input type="text" placeholder='email' className='w-100 p-2' onChange={(e) =>
                     setUserDetails({ ...userDetails, email: e.target.value })} />
 
                 </div>
                 <div className="mb-3">
-                  <input type="text" placeholder='password' className='form-control' onChange={(e) =>
+                  <input type="text" placeholder='password' className='w-100 p-2' onChange={(e) =>
                     setUserDetails({ ...userDetails, password: e.target.value })
                   } />
 
                 </div>
                 <div className="mb-3">
                   {register ? <div>
-                    <button type='button' className='btn btn-warning w-100' onClick={handlleRegister} > Register</button>
-                    <p className='mt-3'>Already User? Login <Link to={'/login'} className='text-warning'>here</Link></p>
+                    <button type='button' className='btn  w-100' onClick={handlleRegister}  style={{backgroundColor:"#66FCF1"}}> Register</button>
+                    <p className='mt-3'>Already User? Login <Link to={'/login'} className='' style={{color:"#66FCF1"}}>here</Link></p>
 
                   </div> :
                     <div>
-                      <button type='button' className='btn btn-warning w-100  ' onClick={handleLogin}>  Login</button>
-                      <p className='mt-3'>New user ragister <Link to={'/register'} className='text-warning'>here</Link></p>
+                      <button type='button' className='btn  w-100  ' style={{backgroundColor:"#66FCF1"}} onClick={handleLogin}>  Login</button>
+                      <p className='mt-3'>New user ragister <Link to={'/register'} className='' style={{color:"#66FCF1"}}>here</Link></p>
 
                     </div>}
                 </div>
