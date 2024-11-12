@@ -137,10 +137,10 @@ function EditProject({ project }) {
         </Modal.Header>
         <Modal.Body>
           <Row>
-            <Col md={6} sm={12} >
+            <Col md={6} sm={12} xs={12} >
               <img src={preview ? preview : `${serverUrl}/uploads/${project.proimg}`} alt="" width={"100%"} height={"50%"} className='m-4' key={key} onChange={(e) => handleFileUpload(e)} />
             </Col>
-            <Col md={6} sm={12}>
+            <Col md={6} sm={12} xs={12}>
               <div className="mb-3">
                 <input type="text" placeholder='title' className='form-control' value={projectDetails.title} onChange={(e) => setProjectDetails({ ...projectDetails, title: e.target.value })} />
               </div>

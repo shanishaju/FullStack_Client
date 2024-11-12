@@ -43,7 +43,7 @@ const getHomeProject =async()=>{
     backgroundRepeat: 'no-repeat' 
 }}>
   <Row className=' d-flex align-items-center justify-content-center  p-5'>
-    <Col xm={12} md={6} className='ps-5  ' style={{marginTop:"10%"}}>
+    <Col xm={12} md={6} xs={12} className='ps-5  ' style={{marginTop:"10%"}}>
 
       <h1 style={{color:"#66FCF1", fontSize:'100px'}}> <FontAwesomeIcon icon={faSlack}  className='me-3 ' style={{ color: '66FCF1' ,fontSize:'90px'}} />
       Project Vault</h1>

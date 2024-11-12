@@ -136,14 +136,14 @@ function AddProject() {
           </Modal.Header>
           <Modal.Body>
             <Row>
-              <Col sm={12} md={6}>
+              <Col sm={12} md={6} xs={12}>
                 <label htmlFor="proimg">
                   <input id='proimg' type="file" style={{ display: 'none' }} key={key} onChange={(e) => handleFile(e)} />
                   <img src={preview ? preview : "https://png.pngtree.com/png-vector/20190508/ourmid/pngtree-upload-cloud-vector-icon-png-image_1027251.jpg"} alt="" width={"100%"} />
                 </label>
 
               </Col>
-              <Col sm={12} md={6}>
+              <Col sm={12} md={6} xs={12}>
                 <form action="" className='p-3'></form>
                 <div className="mb-3">
                   <input type="text" placeholder='title' value={projectDetails.title} className='form-control' onChange={(e) => setProjectDetails({ ...projectDetails, title: e.target.value })} />

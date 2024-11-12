@@ -84,7 +84,7 @@ function Auth({ register }) {
         </Link>
         <div className='container w-100  mt-3 rounded' >
           <Row>
-            <Col md={6} sm={12} className='p-5 d-flex justify-content-center align-items-center border border-success mb-sm-5 mb-md-0' style={{
+            <Col md={6} sm={12} xs={12} className='p-5 d-flex justify-content-center align-items-center border border-success mb-sm-5 mb-xs-5 mb-md-0' style={{
                 borderTopLeftRadius: '50%', borderBottomLeftRadius: '50%'
 
             }} >
@@ -93,7 +93,7 @@ function Auth({ register }) {
               <img src="https://ashakirangroup.net/web_assets/img/giflogin.gif" alt="" className='w-100'
               />
             </Col>
-            <Col md={6} sm={12} className='d-flex justify-content-center align-items-center text-light flex-column border border-success' style={{
+            <Col md={6} sm={12} xs={12} className='d-flex justify-content-center align-items-center text-light flex-column border border-success mt-sm-5' style={{
                 borderTopRightRadius: '50%', borderBottomRightRadius: '50%'
 
             }}>
