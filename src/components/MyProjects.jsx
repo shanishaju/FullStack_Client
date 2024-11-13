@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 function MyProjects() {
   const [userProject, setUserProject] = useState([])
-  // call the variable addResponse here || no refresh
+  // call the variable addResponse here || no refresh || context
   const { addResponse } = useContext(addResponseContext)
   // usestate for delete screen refresh
   const [deleteStatus, setDeleteStatus] = useState(false)
@@ -41,7 +41,8 @@ function MyProjects() {
   // || no refresh
   useEffect(() => {
     getUserProject()
-    setDeleteStatus(false)
+    setDeleteStatus(false) 
+      // || no refresh
   }, [addResponse, deleteStatus,editResponse])
 
   return (

@@ -114,8 +114,10 @@ function AddProject() {
         if (result.status == 200) {
           toast.success('Project Added Successfully')
           handleClose()
+
           // here is where data is being changed so call context here
           setAddResponse(result.data)
+          
         }
       }
       else {
